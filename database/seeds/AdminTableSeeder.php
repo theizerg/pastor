@@ -21,14 +21,7 @@ class AdminTableSeeder extends Seeder
      */
     public function run()
     {
-       
-       DB::table('status')->insert([
-            'nb_nombre'      => 'Activo'
-        ]);
-
-          DB::table('status')->insert([
-            'nb_nombre'      =>'Inactivo'
-        ]);
+     
 
         $user = new User;
         $user->name = 'Theizer';
@@ -36,10 +29,22 @@ class AdminTableSeeder extends Seeder
         $user->last_name = 'Gonzalez';
         $user->email = 'tgonzalez@gmail.com';
         $user->password = 'admin';
-        $user->status_id = 1; // (1) active (0)disabled
+        $user->status = 1; // (1) active (0)disabled
         $user->save();
 
         $user->assignRole('Administrador');
+
+
+        $user = new User;
+        $user->name = 'Michael';
+        $user->username = 'mpaez';
+        $user->last_name = 'Páez';
+        $user->email = 'mpaez@mmmvenezuela.com';
+        $user->password = 'admin';
+        $user->status = 1; // (1) active (0)disabled
+        $user->save();
+
+        $user->assignRole('Usuario');
 
 
 

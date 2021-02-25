@@ -15,7 +15,7 @@
 <div class="container">
   <div class="col-sm-12">
   <div class="card">
-    <div class=" card-header blue-gradient-dark text-white">
+    <div class=" card-header blue-gradient-dark text-white"> 
       <h2 class="card-title">
         <i class="fa fa-user"></i> Datos de usuario
         <small class="pull-right">{{ $user->display_name }}</small>

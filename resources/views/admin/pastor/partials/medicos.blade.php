@@ -40,7 +40,12 @@
               </div>
             </div>
           </div>
-
+         <div class="col-sm-12">
+          <label>Nota</label>
+           <div class="form-group">
+          {!! Form::textarea('tx_nota', null,array('class' => 'form-control input-sm','placeholder'=>'Ejemplo: El pastor fué cambiado a la zona 1','id'=>'tx_nota')) !!}     
+      </div> 
+    </div>
          
         </div>
 

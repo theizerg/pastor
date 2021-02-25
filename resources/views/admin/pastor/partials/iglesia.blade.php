@@ -8,7 +8,7 @@
             {{ Form:: text('nb_nombre',null,['class'=>'form-control','placeholder' => 'Extensión','id'=>'nb_nombre']) }}
              <input name="users_id" type="hidden" value=" {{ auth()->user()->id}}" id="users_id">
 
-             <input name="pastor_id" type="hidden" value=" {{ $pastor->id}}" id="users_id">
+             
           </div>
       </div> 
       <div class="col-sm-6">
@@ -49,21 +49,21 @@
     <div class="col-sm-6">
          <div class="form-group">
           <label>Parroquia </label>
-            {{ Form:: text('nb_parroquia',null,['class'=>'form-control','placeholder' => 'N°. de piso / apartamento / casa  ','id'=>'nb_parroquia']) }}
+            {{ Form:: text('nb_parroquia',null,['class'=>'form-control','placeholder' => 'Parroquia ','id'=>'nb_parroquia']) }}
             
           </div>
     </div>
      <div class="col-sm-6">
          <div class="form-group">
           <label>Municipio </label>
-            {{ Form:: text('nb_municipio',null,['class'=>'form-control','placeholder' => 'N°. de piso / apartamento / casa  ','id'=>'nb_municipio']) }}
+            {{ Form:: text('nb_municipio',null,['class'=>'form-control','placeholder' => 'Municipio','id'=>'nb_municipio']) }}
             
           </div>
     </div>
     <div class="col-sm-6">
          <div class="form-group">
           <label>Ciudad </label>
-            {{ Form:: text('nb_ciudad',null,['class'=>'form-control','placeholder' => 'N°. de piso / apartamento / casa  ','id'=>'nb_ciudad']) }}
+            {{ Form:: text('nb_ciudad',null,['class'=>'form-control','placeholder' => 'Ciudad','id'=>'nb_ciudad']) }}
             
           </div>
     </div>

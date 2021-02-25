@@ -142,6 +142,7 @@
         </div>
      </div>
    </div>
+   
 
 @endsection
 
@@ -157,20 +158,20 @@
      */
 
     var donutData = [
-      { label: 'Col.', data: '{{$t_colaborador}}', color: '#263238' },
-      { label: 'Laicos', data: '{{$t_laico}}', color: '#1b5e20' },
-      { label: 'Lic.', data: '{{$t_licenciado}}', color: '#b71c1c' },
-      { label: 'Min O.', data: '{{$t_ministro_ordenado}}', color: '#aa00ff' }
+      { label: '', data: '{{$t_colaborador}}', color: '#263238' },
+      { label: '', data: '{{$t_laico}}', color: '#1b5e20' },
+      { label: '', data: '{{$t_licenciado}}', color: '#b71c1c' },
+      { label: '', data: '{{$t_ministro_ordenado}}', color: '#aa00ff' }
     ]
     $.plot('#donut-chart', donutData, {
       series: {
         pie: {
           show       : true,
           radius     : 1,
-          innerRadius: 0.5,
+          innerRadius: 1.70,
           label      : {
             show     : true,
-            radius   : 2 / 3,
+            radius   : 3 / 4,
             formatter: labelFormatter,
             threshold: 0.1
           }
@@ -218,7 +219,7 @@
         pie: {
           show       : true,
           radius     : 1,
-          innerRadius: 0.5,
+          innerRadius: 1.80,
           label      : {
             show     : true,
             radius   : 2 / 3,

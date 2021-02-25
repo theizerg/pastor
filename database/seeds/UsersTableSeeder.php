@@ -32,11 +32,12 @@ class UsersTableSeeder extends Seeder
 
         $user = new User;
         $user->name = 'Theizer';
+        $user->nu_zona = 1;
         $user->username = 'tgonzalez';
         $user->last_name = 'Gonzalez';
         $user->email = 'tgonzalez@gmail.com';
         $user->password = 'admin';
-        $user->status_id = 1; // (1) active (0)disabled
+        $user->status = 1; // (1) active (0)disabled
         $user->save();
 
         $user->assignRole('Administrador');

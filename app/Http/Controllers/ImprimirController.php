@@ -63,8 +63,8 @@ class ImprimirController extends Controller
          $pdf->Ln(1);
         $pdf->SetY(20);
         $pdf-> SetFillColor(234, 231, 230);
-       
-         $pdf->Image('images/logo/logo-imagen.png',10,5,40,35,'PNG');
+         $pdf->Image('images/logo/fondo-logo.png',6,5,40,25,'PNG');
+
          $pdf->SetY(10);
          $pdf->SetFont('Arial','B',12);
          $pdf->SetXY(45,15);
@@ -77,7 +77,11 @@ class ImprimirController extends Controller
         
          $pdf->SetXY(175, 10);
          $pdf->SetFont('Arial','B',6);
-          $pdf->Image('images/fondo/descarga.png',170,5,25,25,'PNG');
+         if ($pastor->picture <> null) {
+         $pdf->Image('images/pastores/'.$pastor->picture,165,5,35,30,'JPG');
+         }
+         else
+         $pdf->Image('images/fondo/descarga.png',170,5,25,25,'PNG');
 
          $pdf->Ln(1);
          $pdf->SetXY(48,30);
@@ -126,7 +130,7 @@ class ImprimirController extends Controller
          $pdf->SetXY(50, 65);
          $pdf->Cell(70,5,$pastor->tx_nombres,1,1,'C');
          $pdf->SetXY(120, 65);
-         $pdf->Cell(80,5,$pastor->tx_apellidos,1,1,'C');
+         $pdf->Cell(80,5,utf8_decode($pastor->tx_apellidos),1,1,'C');
          
          $pdf->SetFont('Arial','B',6);
          $pdf->SetXY(10, 70);
@@ -160,9 +164,7 @@ class ImprimirController extends Controller
 
          $pdf->SetFont('Arial','B',6);
          $pdf->SetXY(10, 85);
-         $pdf->Cell(40,5,utf8_decode("CORREO:"),1,1,'C');
-         $pdf->SetXY(50, 85);
-         $pdf->Cell(40,5,utf8_decode("DIRECCION:"),1,1,'C');
+         $pdf->Cell(80,5,utf8_decode("CORREO:"),1,1,'C');
          $pdf->SetXY(90, 85);
          $pdf->Cell(30,5,utf8_decode("TELEFONO:"),1,1,'C');
          $pdf->SetXY(120, 85);
@@ -172,10 +174,10 @@ class ImprimirController extends Controller
 
           //datos ***************************************************************************
          $pdf->SetFont('Arial','',7);
-         $pdf->MultiCell(40,10,$pastor->tx_correo,1,'C'); 
+         $pdf->MultiCell(80,10,$pastor->tx_correo,1,'C'); 
 
          $pdf->SetXY(50, 90);
-         $pdf->MultiCell(40,10,$pastor->tx_direccion.", ".$pastor->empEstado->nb_estado,1,'C');  
+        //$pdf->MultiCell(40,10,$pastor->tx_direccion.", ".$pastor->empEstado->nb_estado,1,'C');  
 
          $pdf->SetXY(90, 90);
          $pdf->MultiCell(30,10,$pastor->nu_telefono,1,'C');  
@@ -186,87 +188,100 @@ class ImprimirController extends Controller
          $pdf->SetXY(150, 90);
          $pdf->MultiCell(50,10,$pastor->nb_ocupacion,1,'C'); 
 
-
-         $pdf->SetFont('Arial','B',8);
+         $pdf->Ln(8);
+         $pdf->SetFont('Arial','B',7);
          $pdf->SetXY(10, 100);
-         $pdf->Cell(190,5,utf8_decode("DATOS ECLESIÁSTICOS DEL PASTOR"),1,1,'C',true);
-         $pdf->SetFont('Arial','B',5);
+         $pdf->Cell(90,5,utf8_decode("¿POSEE HIJOS?"),1,1,'C');
+         $pdf->SetXY(100, 100);
+         $pdf->Cell(100,5,utf8_decode("CANTIDAD DE HIJOS"),1,1,'C');
+
+          $pdf->Ln(1);
+         $pdf->SetFont('Arial','B',6);
          $pdf->SetXY(10, 105);
+         $pdf->MultiCell(90,10,$pastor->nb_hijos,1,'C');
+         $pdf->SetXY(100, 105);
+         if ($pastor->nb_hijos <> 'No') {
+            $pdf->MultiCell(100,10,$pastor->nu_carga_familiar_hijos,1,'C');
+         }
+         $pdf->MultiCell(100,10,'NO TIENE HIJOS',1,'C'); 
+
+         $pdf->SetFont('Arial','B',6);
+         $pdf->SetXY(10, 115);
+         $pdf->Cell(190,5,utf8_decode("DATOS ECLESIÁSTICOS DEL PASTOR"),1,1,'C',true);
+       
+         $pdf->SetXY(10, 120);
          $pdf->MultiCell(40,5,utf8_decode("¿BAUTISMO DEL ESPIRITU SANTO?:"),1,1,'C');
-         $pdf->SetXY(50, 105);
+         $pdf->SetXY(50, 120);
          $pdf->MultiCell(40,5,utf8_decode("¿INSTITUTO TEOLÓGICO?:"),1,1,'C');
-         $pdf->SetXY(90, 105);
+         $pdf->SetXY(90, 120);
          $pdf->MultiCell(40,5,utf8_decode("NOMBRE INSTITUTO TEOLÓGICO:"),1,1,'C');
-         $pdf->SetXY(130, 105);
+         $pdf->SetXY(130, 120);
          $pdf->MultiCell(40,5,utf8_decode("TIEMPO DE ESTUDIO:"),1,1,'C');
-         $pdf->SetXY(170, 105);
+         $pdf->SetXY(170, 120);
          $pdf->MultiCell(30,5,utf8_decode("TITULO OBTENIDO:"),1,1,'C');
 
          $pdf->SetFont('Arial','',7);
-         $pdf->SetXY(10, 110);
+         $pdf->SetXY(10, 125);
          $pdf->MultiCell(40,10,$pastor->nb_bau_Espiritu_Santo,1,'C');  //datos
 
-         $pdf->SetXY(50, 110);
+         $pdf->SetXY(50, 125);
          $pdf->MultiCell(40,10,$pastor->nb_ins_teologico,1,'C');  //datos
 
-         $pdf->SetXY(90, 110);
+         $pdf->SetXY(90, 125);
          $pdf->MultiCell(40,10,$pastor->nb_desc_ins_teologico,1,'C');  //datos
 
-         $pdf->SetXY(130, 110);
+         $pdf->SetXY(130, 125);
          $pdf->MultiCell(40,10,$pastor->nu_tiempo_ins,1,'C');  //datos
 
-         $pdf->SetXY(170, 110);
+         $pdf->SetXY(170, 125);
          $pdf->MultiCell(30,10,$pastor->nb_titulo_obtenido,1,'C');  //datos
 
          $pdf->SetFont('Arial','B',6);
-         $pdf->SetXY(10, 120);
+         $pdf->SetXY(10, 135);
          $pdf->Cell(80,5,utf8_decode("TIEMPO DE SERVICIO:"),1,1,'C');
 
          $pdf->SetFont('Arial','B',6);
-         $pdf->SetXY(90, 120);
+         $pdf->SetXY(90, 135);
          $pdf->Cell(110,5,utf8_decode("ZONA:"),1,1,'C');
          $pdf->SetFont('Arial','',7);
-         $pdf->SetXY(10, 125);
+         $pdf->SetXY(10, 140);
          $pdf->MultiCell(80,10,utf8_decode($pastor->fe_ingreso),1,'C');  //datos
 
-         $pdf->SetXY(90, 125);
+         $pdf->SetXY(90, 140);
          $pdf->MultiCell(110,10,$pastor->nu_zona,1,'C');  //datos
 
-
          $pdf->SetFont('Arial','B',8);
-         $pdf->SetXY(10, 135);
+         $pdf->SetXY(10, 150);
          $pdf->Cell(190,5,utf8_decode("DATOS MÉDICOS DEL PASTOR"),1,1,'C',true);
          $pdf->SetFont('Arial','B',6);
-         $pdf->SetXY(10, 140);
+         $pdf->SetXY(10, 155);
          $pdf->Cell(40,5,utf8_decode("¿SUFRE ALGUNA ENFERMEDAD?:"),1,1,'C');
 
-         $pdf->SetXY(50, 140);
+         $pdf->SetXY(50, 155);
          $pdf->Cell(40,5,utf8_decode("¿DESCRIPCIÓN DE ENFERMEDAD?:"),1,1,'C');
 
-         $pdf->SetXY(90, 140);
+         $pdf->SetXY(90, 155);
          $pdf->Cell(110,5,utf8_decode("TIPO DE SANGRE:"),1,1,'C');
 
          $pdf->SetFont('Arial','',7);
-         $pdf->SetXY(10, 145);
+         $pdf->SetXY(10, 160);
          $pdf->MultiCell(40,10,$pastor->nb_sufre_enfermedad,1,'C');  //datos
 
 
-         $pdf->SetXY(50, 145);
+         $pdf->SetXY(50, 160);
          $pdf->MultiCell(40,10,$pastor->nb_descripcion_enfermedad,1,'C');  //datos
 
 
-         $pdf->SetXY(90, 145);
+         $pdf->SetXY(90, 160);
          $pdf->MultiCell(110,10,$pastor->empTipoSangre->nb_tipo_sangre,1,'C');  //datos
-            
-        foreach ($iglesias as $key => $iglesia) {
-         
+
          $pdf->Ln(6);
          $pdf->Ln(6);
          $pdf->SetFont('Arial','B',8);
          $pdf->Cell(190,5,utf8_decode("DATOS DE LA EXTENSIÓN ASOCIADA AL PASTOR"),1,1,'C',true);
 
-         
-         
+         foreach ($iglesias as $key => $iglesia) {
+
          $pdf->SetFont('Arial','B',8);
          $pdf->Cell(90,6,utf8_decode("EXTENSIÓN"),1,0,'C');
          $pdf->Cell(100,6,utf8_decode("ZONA"),1,0,'C');
@@ -274,20 +289,20 @@ class ImprimirController extends Controller
          $pdf->Cell(90,6,utf8_decode($iglesia->nb_nombre) ,1,0,'C');
          $pdf->Cell(100,6,utf8_decode($iglesia->nu_zona) ,1,0,'C');
 
+
          $pdf->Ln(6);
          $pdf->SetFont('Arial','B',8);
          $pdf->Cell(190,5,utf8_decode("DIRECCIÓN DE LA EXTENSIÓN"),1,1,'C',true);
-         $pdf->MultiCell(190,5,utf8_decode($iglesia->nb_urbanizacion.', '.$iglesia->estado->nb_estado.', '.' MUNICIPIO: '.$iglesia->nb_municipio.', '.' PARROQUIA: '.$iglesia->nb_parroquia.', '.' CÓDIGO POSTAL: '.$iglesia->nu_codigo_postal.', '.'LOCAL N°'.$iglesia->nu_casa.', '.'TELEFONO: '.$iglesia->nu_telefono.', '.$iglesia->nb_ciudad.' - '.'VENEZUELA'),1,'C');  //datos
+         $pdf->MultiCell(190,5,utf8_decode($iglesia->nb_urbanizacion.', '.$iglesia->estado->nb_estado.', '.' MUNICIPIO: '.$iglesia->nb_municipio.', '.' PARROQUIA: '.$iglesia->nb_parroquia.', '.' CÓDIGO POSTAL: '.$iglesia->nu_codigo_postal.', '.'LOCAL N°'.$iglesia->nu_casa.', '.'TELEFONO: '.$iglesia->nu_telefono.', '.$iglesia->nb_ciudad.' - '.'VENEZUELA'),1,'C');  //
 
+         $pdf->Ln(6);
+         
 
          }
 
+        
 
-         
-
-
-
-       
+        
 
         
         

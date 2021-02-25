@@ -46,7 +46,7 @@ require('chart.js/dist/Chart.min.js');
 
 
 /* Datatables.net responsive*/
-require('@iconify/iconify');
+//require('@iconify/iconify');
 
 require( 'datatables.net-bs4' );
 require( 'datatables.net-buttons-bs4' );       

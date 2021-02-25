@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ env('APP_NAME') }} - @yield('title')</title>
+    <title>MMM - @yield('title')</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="robots" content="noindex, nofollow">
     <link href="{{ asset('css/apps.css') }}" rel="stylesheet" />
@@ -15,7 +15,7 @@
     @stack('styles')
   </head>
 
-  <body >
+  <body class="blue-gradient-dark" >
     <!--Page Content Here -->
     @yield('content')
 

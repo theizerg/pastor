@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Documentos;
+use App\Models\Notificaciones;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 class DocumentosController extends Controller
@@ -18,11 +19,15 @@ class DocumentosController extends Controller
           
           $roles = Role::get();  
           $documentos = Documentos::get();
-          return view ('admin.iglesias.documentos.index', compact('documentos','roles'));
+          $notificaciones = Notificaciones::count();
+          $descripNot = Notificaciones::get();
+          return view ('admin.iglesias.documentos.index', compact('documentos','roles','notificaciones','descripNot'));
          }
          $roles = Role::get();
+          $notificaciones = Notificaciones::count();
+          $descripNot = Notificaciones::get();
           $documentos = Documentos::where('user_id', auth()->user()->id)->get();
-          return view ('admin.iglesias.documentos.index', compact('documentos','roles'));
+          return view ('admin.iglesias.documentos.index', compact('documentos','roles','notificaciones','descripNot'));
       
     }
 
@@ -46,9 +51,14 @@ class DocumentosController extends Controller
     {
          //guardar imagen
         $file = $request->file('nb_documento');
-        $path = public_path() . '/documentos/extension';
+        $path = public_path() . '/images/documentos';
         $fileName = uniqid() . $file->getClientOriginalName();
         $moved = $file->move($path, $fileName);
+
+                //dd($fileName);
+
+                //crear registro
+                //$producto->photo = $fileName;
 
         //crear registro
         if($moved)
@@ -84,7 +94,7 @@ class DocumentosController extends Controller
     {
         $documento = Documentos::find($id);
 
-        $public_path = public_path().'/documentos/extension/'.$documento->nb_documento;
+        $public_path = public_path().'/images/documentos/'.$documento->nb_documento;
         
         if ($public_path <> null){
 

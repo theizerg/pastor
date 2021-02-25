@@ -14,6 +14,7 @@ use App\Models\Pais;
 use App\Models\TipoSangre;
 use App\Models\TipoLocal;
 use App\Models\Iglesias;
+use App\Models\Notificaciones;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
@@ -37,18 +38,22 @@ class PastorController extends Controller
        $pastor = \Auth::user()->hasRole('Administrador'); 
        $idPastor=\Auth::user()->id;
 
-     if ($pastor <> 'Ricardo Manrique') {
+     if ($pastor <> true) {
        
         $roles = Role::get();
-        $pastores = Pastor::where('users_id',$idPastor)->Paginate(4);
-        return view('admin.pastor.index',compact('pastores','roles'));
+        $notificaciones = Notificaciones::count();
+        $descripNot = Notificaciones::get();
+        $pastores = Pastor::where('users_id',$idPastor)->get();
+        return view('admin.pastor.index',compact('pastores','roles','notificaciones','descripNot'));
 
         }
 
         $roles = Role::get();
 
-         $pastores = Pastor::Paginate(4);
-        return view('admin.pastor.index',compact('pastores','roles'));
+         $pastores = Pastor::get();
+         $notificaciones = Notificaciones::count();
+        $descripNot = Notificaciones::get();
+        return view('admin.pastor.index',compact('pastores','roles','notificaciones','descripNot'));
 
 
         
@@ -63,6 +68,8 @@ class PastorController extends Controller
     {   
         $usuario=\Auth::user();
         $idUsuario=$usuario->id;
+        $notificaciones = Notificaciones::count();
+        $descripNot = Notificaciones::get();
         $genero = Genero::get()->pluck('nb_genero','id');
         $estadoC = Estado_Civil::get()->pluck('nb_estado_civil','id');
         $estado = Estado::get()->pluck('nb_estado','id');
@@ -83,7 +90,9 @@ class PastorController extends Controller
             'pais'            => $pais,
             'tipoSangre'      => $tipoSangre,
             'idUsuario'       => $idUsuario,
-            'roles'           => $roles
+            'roles'           => $roles,
+            'notificaciones' =>$notificaciones,
+            'descripNot'     =>$descripNot
         ]);
     }
 
@@ -101,6 +110,13 @@ class PastorController extends Controller
         $this->validateRequest($request,null);
         $pastor = new Pastor();
         $this->setPastor($pastor,$request);
+        if ($request->genero_id == 2) {
+            $notification = array(
+          'message' => '¡Registro guardado!',
+          'alert-type' => 'success'
+      );
+       return \Redirect::to('pastor/create')->with($notification);
+        }
         $notification = array(
           'message' => '¡Registro guardado!',
           'alert-type' => 'success'
@@ -141,6 +157,8 @@ class PastorController extends Controller
         $tipoSangre = TipoSangre::get()->pluck('nb_tipo_sangre','id');
         $pastor = Pastor::find(\Hashids::decode($id)[0]);
         $roles = Role::get();
+        $notificaciones = Notificaciones::count();
+        $descripNot = Notificaciones::get();
 
 
             return view('admin.pastor.edit')->with([
@@ -154,7 +172,10 @@ class PastorController extends Controller
             'tipoSangre'      => $tipoSangre,
             'idUsuario'       => $idUsuario,
             'pastor'          => $pastor,
-            'roles'           => $roles
+            'roles'           => $roles,
+            
+            'notificaciones' =>$notificaciones,
+            'descripNot'     =>$descripNot
         ]);
     }
 
@@ -244,6 +265,7 @@ class PastorController extends Controller
 
 
      private function setPastor(Pastor $pastor,Request $request){
+
         $edad = Carbon::parse($request->fe_nacimiento)->age;
 
         $pastor->tx_nombres   = $request->input('tx_nombres');
@@ -258,8 +280,15 @@ class PastorController extends Controller
         $pastor->nacionalidad_id  = $request->input('nacionalidad_id');
         $pastor->genero_id    = $request->input('genero_id'); 
         $pastor->grado_instruccion_id      = $request->input('grado_instruccion_id');
-        $pastor->estado_civil_id      = $request->input('estado_civil_id');
-        $pastor->estado_id     = $request->input('estado_id');
+        $pastor->estado_civil_id           = $request->input('estado_civil_id');
+        $pastor->nb_hijos                  = $request->input('nb_hijos');
+        if ($request->genero_id == 1) {
+        $pastor->nu_carga_familiar_hijos   = 0;
+        }
+        else
+        $pastor->nu_carga_familiar_hijos   = $request->input('nu_carga_familiar_hijos');
+        //dd($request);
+        $pastor->estado_id = $request->input('estado_id');
         $pastor->tx_nota   = $request->input('tx_nota');
         $pastor->nb_bau_Espiritu_Santo   = $request->input('nb_bau_Espiritu_Santo');
         $pastor->nb_ins_teologico   = $request->input('nb_ins_teologico');
@@ -275,7 +304,22 @@ class PastorController extends Controller
         $pastor->nu_zona   = $request->input('nu_zona');
         $pastor->nb_titulo_obtenido   = $request->input('nb_titulo_obtenido');
         $pastor->users_id   = $request->input('users_id');
-        $pastor->status_id   = $request->input('status_id');
+        $pastor->status   = $request->input('status');
+
+        $featured = $request->photo;
+        if ($featured <> null)
+         {
+
+            $featuerd_new = time().$featured->getClientoriginalName();
+            $featured->move('images/pastores', $featuerd_new);
+            $pastor->picture = $featuerd_new;
+
+          }else
+            $pastor->picture = null;
+
+        
+
+        
         $pastor->save();
     }
 

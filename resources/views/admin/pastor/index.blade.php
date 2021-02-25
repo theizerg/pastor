@@ -16,7 +16,7 @@
 <div class="row">
   <div class="col-md-6">
     <div class="btn-group">
-      @can('RegistrarUsuario')
+      @can('CrearPastores')
       <a href="{{ url('pastor/create') }}" class="btn blue darken-4 text-white"><i class="fa fa-plus-square"></i> Ingresar</a>
       @endcan
     </div>
@@ -54,7 +54,7 @@
                   <td>{{ $value->nu_cedula}}</td>
                   <td>{{ $value->tx_correo}}</td>
                   <td>{{ $value->empGradoMinisterial->nb_grado_ministerial}}</td>
-                  <td><span class="badge text-white fa-1x {{ $value->status_id ? 'green' : 'red' }}">{{ $value->display_status }}</span></td>
+                  <td><span class="badge text-white fa-1x {{ $value->status ? 'green' : 'red' }}">{{ $value->display_status }}</span></td>
                  
                   <td>
                        <a class="btn btn-round blue darken-4" href="{{ url('pastor', [$value->encode_id]) }}"><i class="mdi mdi-account  text-white"></i> </a>

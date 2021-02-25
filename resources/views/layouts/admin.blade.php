@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{{ env('APP_NAME') }} - @yield('title')</title>
+        <title>MMM - @yield('title')</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <meta name="robots" content="noindex, nofollow">
 
@@ -11,14 +11,10 @@
         <link rel="stylesheet" href="{{ asset('css/apps.css') }}">
         <link rel="stylesheet" href="{{ asset('css/system.css') }}">
         <link rel="stylesheet" href="{{ asset('iconfont/material-icons.css') }}">
-        <link rel="icon" href="{{ asset('images/logo/logo.png') }}">
-            <!-- Material Icons -->
-            <link rel="stylesheet" href="/assets/googlefonts/css/css.css">
-
-
-        @stack('styles')
+        <link rel="icon" href="{{ asset('images/logo/fondo-logo.png') }}">
+         @stack('styles')
     </head>
-    <body class="hold-transition sidebar-mini layout-fixed">
+    <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
         <div class="wrapper" id="body">
 
 
@@ -29,6 +25,25 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
+             @can('VerNotificaciones')
+
+        <a href="#" class="btn" data-toggle="modal" data-target="#NotificacionesStock">
+               
+             
+                <label id="total_notificaciones  white-text">
+                    <p class="white-text">{{$notificaciones}}
+                 
+                        <i class="fa fa-envelope white-text" aria-hidden="true"></i>
+            i
+                        <i class="fa fa-envelope-o  white-text" aria-hidden="true"></i>
+                  </p>
+                </label>
+          
+        </a>
+                            
+
+        </li>
+        @endcan
 
         </li>
         <li class="nav-item d-none d-sm-inline-block">
@@ -63,7 +78,7 @@
                         <p>
                         {{ Auth::user()->full_name }}
                         <br>
-                        {{ Auth::user()->hasrole('Administrador') ? 'Administrador' : 'Usuario' }}
+                        {{ Auth::user()->hasrole('Administrador') ? 'Supervisor Nacional' : 'Presbítero' }}
 
 
 
@@ -105,7 +120,7 @@
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper"><br>
             <section class="content-header">
             <h1 class="ml-3">
                 @yield('page_title')
@@ -146,8 +161,7 @@
         <!-- jQuery -->
         <script src="{{asset('js/apps.js')}}"></script>
         <script src="{{ asset('js/system.js') }}"></script>
-        
-         <script>
+        <script>
 
          @if(Session::has('message'))
          var type = "{{ Session::get('alert-type', 'info') }}";
@@ -190,5 +204,90 @@
 
 
         </style>
+
+        @can('VerNotificaciones')
+        <!-- Modal alerts -->
+<div class="modal fade" id="NotificacionesStock" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              
+                <h4 class="modal-title">Notificaciones</h4>
+            </div>
+
+            <div class="list-group">
+               
+                    <div class="list-group">
+                    @foreach($descripNot     as $notificacion)
+                        <div class="list-group-item list-group-item-action">
+                            <div class="row">                               
+                                <div class="col-md-8 col-md-offset-1">
+                                    <h5>{{$notificacion->fecha}}</h5>
+                                    <h4>
+                                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                        <a class="btn-link" target="_blank" href="{{$notificacion->link}}">
+                                            <small>{{$notificacion->titulo}}</small></h4>
+                                        </a>
+                                    </h4>
+                                    <p class="mb-1">{{$notificacion->texto}}</p>
+                                </div>
+                                <div class="col-md-1 col-md-offset-1">
+                                    <h4 align="">
+                                        {!! Form::open(['route' => ['borrarNotificacion', $notificacion->id], 'method' => 'DELETE', 'class' => 'form-borrar' ]) !!}
+                                            <a class="btn btn-link btn-borrar-mensaje" type="submit" value=""><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                        {!! Form::close() !!}
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                        <div id="sin-mensajes" class="list-group-item list-group-item-action">
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1 nuevas text-center">
+                                    <h4>No hay notificaciones que mostrar</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+             
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endcan
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        if($(".form-borrar").length > 0){
+            $("#sin-mensajes").hide();
+        }
+        $('.form-borrar').on('click', function(e) {
+            e.preventDefault();
+            var form = this;
+            var data = $(this).serialize();
+            var url = $(this).attr('action');
+            $.ajax({
+                url: url,
+                data: data,
+                type: 'DELETE',
+                success: function(result) {
+                    var row = $(form).parents('.list-group-item');
+                    //row.fadeOut().remove();
+                    row.fadeOut().remove();
+                    $("#total_notificaciones").html(result.total);
+                    if(result.total == 0){
+                        $("#sin-mensajes").fadeIn();
+                    }
+                },
+                error: function(result) {
+                }
+            });
+        });
+    });
+</script>
     </body>
 </html>

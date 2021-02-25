@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('status_id')->unsigned();
-            $table->foreign('status_id')->references('id')->on('status');
+            $table->string('nu_zona');
+            $table->integer('status');
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

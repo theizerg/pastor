@@ -30,7 +30,7 @@
               <h3 class="card-title">Crear usuarios</h3>
              
             </div>
-           {!!Form::open (['route'=>'user.store','id'=>'postulados_form'])!!}
+           {!!Form::open (['route'=>'user.store','id'=>'postulados_form','autocomplete' => 'off'])!!}
             <div class="card-body">
               <ul class="list-inline">
                    <li class="list-inline-item">
@@ -65,6 +65,11 @@
                 <span class="missing_alert text-danger" id="username_alert"></span>
               </div>
               <div class="form-group">
+                <label for="username">Zona</label>
+                <input type="number" class="form-control" id="username" name="nu_zona" >
+                <span class="missing_alert text-danger" id="nu_zona_alert"></span>
+              </div>
+              <div class="form-group">
                 <label for="email">Correo Electrónico</label>
                 <input class="form-control" id="email" name="email" >
                 <span class="missing_alert text-danger" id="email_alert"></span>
@@ -94,8 +99,8 @@
                 <label for="status_id">Acceso al sistema</label>
                 <div class="checkbox icheck">
                   <label>
-                    <input type="radio" name="status_id" value="1" checked> Activo&nbsp;&nbsp;
-                    <input type="radio" name="status_id" value="2"> Deshabilitado
+                    <input type="radio" name="status" value="1" checked> Activo&nbsp;&nbsp;
+                    <input type="radio" name="status" value="0"> Deshabilitado
                   </label>
                 </div>
               </div>

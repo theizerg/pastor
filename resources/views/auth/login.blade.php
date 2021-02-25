@@ -9,6 +9,11 @@
         <div class="col-md-6">
             <div class="card-group">
                 <div class="card p-4 mt-5 elevation-3"><br><br><br><br>
+                  <div class="header">
+                        <div class="text-center">
+                 <img src="{{ asset('images/logo/fondo-logo.png') }}" height="100">
+             </div>
+                    </div>
                     <div class="card-body">
                         <h1>Iniciar Sesión</h1><p class="text-muted">SAPCNPE<br>
                             <small>Sistema automatizado para el control nacional de pastores y extensiones.</small>

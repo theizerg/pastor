@@ -30,6 +30,9 @@ class CreatePastorTable extends Migration
             $table->string('nb_titulo_obtenido');
             $table->string('nb_sufre_enfermedad');
             $table->string('nb_descripcion_enfermedad');
+            $table->string('nb_hijos');
+            $table->integer('nu_carga_familiar_hijos');
+            //$table->integer('nu_carga_familiar_extra');
             $table->integer('tipo_sangre_id');
            
 
@@ -46,11 +49,11 @@ class CreatePastorTable extends Migration
             $table->string('tx_nota');
             $table->string('picture')->nullable();
             $table->integer('users_id');
-            $table->integer('status_id')->unsigned();
+            $table->integer('status');
             /**
              *  Add foreign key constraints to these columns
              */
-            $table->foreign('status_id')->references('id')->on('status');
+           // $table->foreign('status_id')->references('id')->on('status');
             $table->foreign('lugar_nacimiento_id')->references('id')->on('pais');
             $table->foreign('nacionalidad_id')->references('id')->on('nacionalidad');
             $table->foreign('grado_instruccion_id')->references('id')->on('grado_instruccion');

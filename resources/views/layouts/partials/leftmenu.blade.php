@@ -1,208 +1,124 @@
- <!-- Brand Logo -->
-   
-     <!-- Sidebar -->
+<!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('images/user/user1-128x128.jpg') }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('images/logo/fondo-logo.png') }}" class="elevation-2" alt="User Image">
         </div>
-        <div class="info">
-          <a href="{{ url('/') }}" class="d-block text-center"> {{ Auth::user()->full_name }}</a>
-          <small class="text-center text-white ml-5">
-            {{ Auth::user()->hasrole('Administrador') ? 'Administrador' : 'Usuario' }}
+        <div class="info text-center">
+          <a href="{{ url('/') }}" class="d-block"> {{ Auth::user()->full_name }}</a>
+          <small class="text-white ml-5">
+            {{ Auth::user()->hasrole('Administrador') ? 'Supervisor Nacional' : 'Presbítero' }}
           </small><br>
           <small class="text-white">
             Miembro desde el año {{ Auth::user()->created_at->format('Y') }}</small>
         </div>
       </div>
-    <!-- Sidebar Menu -->
-        <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
 
-        <!-- Add icons to the links using the .nav-icon class
-            with font-awesome or any other icon font library -->
-        <li class="nav-header">OPCIONES</li>
-
-
-        <li class="nav-item has-treeview menu-open">
-        <a href="#" class="nav-link active">
-          <i class="nav-icon fas fa-cogs"></i>
-          <p>
-            Administración
-            <i class="right fas fa-angle-left"></i>
-          </p>
-        </a>
-
-
-          <ul class="nav nav-treeview">
-           <li class="nav-item has-treeview">
-            @can('VerPermisos')
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
-              <i class="nav-icon material-icons">format_list_bulleted</i>
+              <i class="nav-icon mdi mdi-view-dashboard"></i>
               <p>
-                Permisos
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-
-            <ul class="nav nav-treeview">
-              @foreach ($roles as $role)
-
-              <li class="nav-item">
-                <a href="/permission/{{ $role->name }}" class="nav-link">
-                  <i class="fas fa-clipboard-list nav-icon"></i>
-                  <p>{{ $role->name }}</p>
-                </a>
-              </li>
-             @endforeach
-          </li>
-        </ul>
-       @endcan
-        </ul>
-        <ul class="nav nav-treeview">
-           <li class="nav-item has-treeview">
-             @can('VerUsuario')
-            <a href="#" class="nav-link active">
-              <i class="nav-icon material-icons">person</i>
-              <p>
-                Usuarios
+                Administración
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-
+              @can('VerUsuario')
               <li class="nav-item">
                 <a href="/user" class="nav-link">
-                  <i class="far fa-file nav-icon"></i>
-                  <p>Mostrar datos</p>
+                  <i class="fas fa-users nav-icon"></i>
+                  <p>Usuarios</p>
                 </a>
               </li>
-
-            @can('RegistrarUsuario')
-               <li class="nav-item">
-                <a href="/user/create" class="nav-link">
-                  <i class="fas fa-plus-square nav-icon"></i>
-                  <p>Crear usuario</p>
-                </a>
-              </li>
+              @endcan
+              @can('VerPermisos')
+              <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon mdi mdi-lock"></i>
+                <p>
+                  Permisos
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                @foreach ($roles as $role)
+                <li class="nav-item">
+                  <a href="/permission/{{ $role->name }}" class="nav-link">
+                    <i class="mdi mdi-human-male-child nav-icon"></i>
+                    <p>{{ $role->name }}</p>
+                  </a>
+                </li>
+                @endforeach
+              </ul>
+            </li>
             @endcan
-          </li>
-          @endcan
-        </ul>
-        </li>
-        @can('VerRol')
-          <li class="nav-item has-treeview">
-
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-lock nav-icon"></i>
-              <p>
-                Roles
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              @can('CrearRol')
+            @can('VerRol')
               <li class="nav-item">
-                <a href="/roles/create" class="nav-link">
-                  <i class="far fa-plus-square nav-icon"></i>
-                  <p>Agregar rol</p>
-                </a>
-              </li>
-            @endcan
-
-               <li class="nav-item">
                 <a href="/roles" class="nav-link">
-                  <i class="fas fa-clipboard-list nav-icon"></i>
-                  <p>Vista general</p>
+                  <i class="fas fa-user-tie nav-icon"></i>
+                  <p>Roles</p>
                 </a>
               </li>
-
-            </ul>
-          </li>
-          @endcan
-           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-sign-in-alt nav-icon"></i>
-              <p>
-                Logins
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-               <li class="nav-item">
+              @endcan
+              <li class="nav-item">
                 <a href="/logins" class="nav-link">
-                  <i class="fas fa-clipboard-list nav-icon"></i>
-                  <p>Vista general</p>
+                  <i class="fas fa-sign-in-alt nav-icon"></i>
+                  <p>Logins</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open ">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-user-tie nav-icon"></i>
+              <i class="nav-icon fas fa-copy"></i>
               <p>
-                Pastores
-                <i class="right fas fa-angle-left"></i>
+                REGISTROS
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-               <li class="nav-item">
+              @can('VerPastores')
+              <li class="nav-item">
                 <a href="/pastor" class="nav-link">
-                  <i class="fas fa-clipboard-list nav-icon"></i>
-                  <p>Vista general</p>
+                  <i class="mdi mdi-christianity nav-icon"></i>
+                  <p>Pastores</p>
                 </a>
               </li>
-            </ul>
-          </li>
-           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-church nav-icon"></i>
-              <p>
-                Extensiones
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-               <li class="nav-item">
+              @endcan
+              @can('VerIglesia')
+              <li class="nav-item">
                 <a href="/iglesias" class="nav-link">
-                  <i class="fas fa-clipboard-list nav-icon"></i>
-                  <p>Vista general</p>
+                  <i class="mdi mdi-church nav-icon"></i>
+                  <p>Extensiones</p>
                 </a>
               </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-file nav-icon"></i>
-              <p>
-                Documentos
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-               <li class="nav-item">
+              @endcan
+              @can('VerDocumentos')
+              <li class="nav-item">
                 <a href="/documento" class="nav-link">
-                  <i class="fas fa-clipboard-list nav-icon"></i>
-                  <p>Vista general</p>
+                  <i class="mdi mdi-folder-account-outline nav-icon"></i>
+                  <p>Documentos</p>
                 </a>
               </li>
+              @endcan
+              @can('VerActividades')
+              <li class="nav-item">
+                <a href="/actividades" class="nav-link">
+                  <i class="mdi mdi-chart-areaspline-variant nav-icon"></i>
+                  <p>Actividades</p>
+                </a>
+              </li>
+              @endcan
             </ul>
           </li>
-          
-          
-      
-          
-           </ul>
         </ul>
-
-
-      </li>
-
-       </li>
-    </ul>
-</nav>
-
-    <!-- /.sidebar-menu -->
+      </nav>
+      <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->

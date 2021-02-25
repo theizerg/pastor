@@ -39,9 +39,12 @@ Route::middleware(['auth',])->group(function () {
    Route::get('documentos/{iglesia_id}', 'IglesiasController@documentos');
    Route::resource('documento', 'DocumentosController');
    Route::get('documento', 'DocumentosController@documento');
+   Route::resource('actividades', 'ActividadesController');
 
  /*******************************************************/
 /*******************************************************/
+
+ Route::DELETE('/notificaciones/borrar/{notificacion_id}', 'HomeController@borrarNotificacion')->name('borrarNotificacion');
 
 
 });

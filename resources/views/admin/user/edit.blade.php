@@ -31,9 +31,9 @@
     <br>
     <div class="row">
       <div class="col-md-12">
-       <div class="card card-danger card-outline">
-        <div class="card-header card-header-primary outline-primary " style="background: #0d47a1;">
-              <h3 class="card-title">Editar usuarios</h3>
+       <div class="card ">
+        <div class="card-header blue-gradient-dark">
+              <h3 class="card-title text-white">Editar usuarios</h3>
              
             </div>
           {!! Form::model($user, ['route' => ['user.update',$user->encode_id],'method' => 'PUT']) !!}      
@@ -70,6 +70,11 @@
                 <input class="form-control" id="last_name" name="last_name" value="{{ $user->last_name }}" placeholder="Apellidos">
                 <span class="missing_alert text-danger" id="last_name_alert"></span>
               </div>
+              <div class="form-group">
+                <label for="last_name">Zona</label>
+                <input class="form-control" id="nu_zona" name="nu_zona" value="{{ $user->nu_zona }}" placeholder="Apellidos">
+                <span class="missing_alert text-danger" id="nu_zona_alert"></span>
+              </div>
              
               <div class="form-group">
                 <label for="email">Correo Electrónico</label>
@@ -102,11 +107,11 @@
               </div>
               @if(Auth::user()->hasrole('Administrador') && Auth::user()->id != $user->id)
               <div class="form-group">
-                <label for="status_id">Acceso al sistema</label>
+                <label for="status">Acceso al sistema</label>
                 <div class="checkbox icheck">
                   <label>
-                    <input type="radio" name="status_id" value="1" {{ $user->status_id == 1 ? 'checked' : '' }}> Activo&nbsp;&nbsp;
-                    <input type="radio" name="status_id" value="2" {{ $user->status_id == 2 ? 'checked' : '' }}> Deshabilitado&nbsp;&nbsp;
+                    <input type="radio" name="status" value="1" {{ $user->status == 1 ? 'checked' : '' }}> Activo&nbsp;&nbsp;
+                    <input type="radio" name="status" value="0" {{ $user->status == 0 ? 'checked' : '' }}> Deshabilitado&nbsp;&nbsp;
                   </label>
                 </div>
               </div>

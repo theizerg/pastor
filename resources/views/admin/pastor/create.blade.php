@@ -19,7 +19,7 @@
       <div class="col-md-12">
         <div class="card ">
         
-        {!! Form::open(['route' => ['pastor.store'],'method' => 'POST','autocomplete'=>'off']) !!} 
+        {!! Form::open(['route' => ['pastor.store'],'method' => 'POST','autocomplete'=>'off','enctype' => 'multipart/form-data']) !!} 
               <div class="card-body">
                  <ul class="list-inline">
                    <li class="list-inline-item">
@@ -49,7 +49,7 @@
                 <i id="ajax-icon" class="fa fa-save"></i> Guardar
               </button>
             </div>
-         {!! Form::close()!!}
+          {!! Form::close()!!}
     </div>
   </div>
 </div>
@@ -73,7 +73,9 @@
 jQuery(document).ready(function() {
 
      form = $('#pastor_form');
-    
+     $(".form-hijos").hide();
+     $(".nb_hijos").hide();
+     $('#form-hijos').val(0);
     $('#nb_ins_teologico').unbind('change');//borro evento click
     $('#nb_ins_teologico').on("change", function(e) { //asigno el evento change u otro
     if ( $("#nb_ins_teologico").val() == 'No')
@@ -111,17 +113,37 @@ jQuery(document).ready(function() {
     $('#nb_sufre_enfermedad').unbind('change');//borro evento click
     $('#nb_sufre_enfermedad').on("change", function(e) { //asigno el evento change u otro
     if ( $("#nb_sufre_enfermedad").val() == 'No')
+        {
+            
+            $('#nb_descripcion_enfermedad').attr('enabled','enabled');
+            $('#nb_descripcion_enfermedad').val('N/A');
+
+
+        }
+        else
+        {
+            $('#nb_descripcion_enfermedad').removeAttr('enabled','enabled');
+            $('#nb_descripcion_enfermedad').val('');
+
+        }
+                    
+
+
+
+    });
+
+    $('#nb_hijos').unbind('change');//borro evento click
+    $('#nb_hijos').on("change", function(e) { //asigno el evento change u otro
+    if ( $("#nb_hijos").val() == 'Si')
                     {
-                        
-                        $('#nb_descripcion_enfermedad').attr('enabled','enabled');
-                        $('#nb_descripcion_enfermedad').val('N/A');
+                       $(".form-hijos").show();
 
 
                     }
                     else
                     {
-                        $('#nb_descripcion_enfermedad').removeAttr('enabled','enabled');
-                        $('#nb_descripcion_enfermedad').val('');
+                        $(".form-hijos").hide();
+                        $('#nu_carga_familiar_hijos').val(0);
 
                     }
                     
@@ -130,8 +152,40 @@ jQuery(document).ready(function() {
 
     });
 
-});
+$('#estado_civil_id').unbind('change');//borro evento click
+    $('#estado_civil_id').on("change", function(e) { //asigno el evento change u otro
 
+if ( $("#estado_civil_id").val() == '1')
+                    {
+                       $(".nb_hijos").hide();
+                        $('#form-hijos').val(0);
+
+
+                    }
+  else if ( $("#estado_civil_id").val() == '2')
+                    {
+                       $(".nb_hijos").show();
+
+
+                    }
+                    else if ( $("#estado_civil_id").val() == '3') {
+
+                     $(".nb_hijos").show();
+                    }
+                    else
+                    {
+                        $(".form-hijos").hide();
+                        $(".nb_hijos").hide();
+                        $('#form-hijos').val(0);
+
+                    }
+                    
+
+
+
+    });
+   
+});
 
     </script>
 @endpush

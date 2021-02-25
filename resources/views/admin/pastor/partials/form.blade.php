@@ -93,13 +93,30 @@
           {!! Form::select('estado_civil_id', $estadoC, null,array('class' => 'form-control input-sm','placeholder'=>'Estado civil','id'=>'estado_civil_id')) !!}     
       </div> 
     </div>
-    <div class="col-sm-12">
-      <label>Nota</label>
+    <div class="form-group text-center col-sm-12 ">
+     <div class="box-body">
         <div class="form-group">
-          {!! Form::textarea('tx_nota', null,array('class' => 'form-control input-sm','placeholder'=>'Ejemplo: El pastor fué cambiado a la zona 1','id'=>'tx_nota')) !!}     
+          <label class="nb_hijos">¿Posee hijos?</label>
+          <select class="form-control select2 nb_hijos" style="width: 100%;" id ="nb_hijos" name="nb_hijos">
+            <option selected>Seleccione</option>
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+    </div>
+ </div>   
+  <div class="col-sm-12">
+      <label class="form-hijos">Cantidad de hijos</label>
+        <div class="form-group form-hijos">
+          {!! Form::textarea('nu_carga_familiar_hijos', null,array('class' => 'form-control input-sm','placeholder'=>'Por favor describa la cantidad de hijos que posee el pastor','id'=>'nu_carga_familiar_hijos')) !!}     
       </div> 
     </div>
-
+    <div class="col-sm-12">
+      <label class="form-group">Cargar la foto del pastor</label>
+        <div class="form-group">
+          <input type="file" class="form-control" name="photo" value="{{ old('photo') }}" />    
+      </div> 
+    </div>
   </div>
 
         

@@ -50,7 +50,7 @@ class Pastor extends Model
 
      public function getDisplayStatusAttribute()
     {
-        return $this->status_id == 1 ? 'Activo' : 'Inactivo';
+        return $this->status == 1 ? 'Activo' : 'Inactivo';
     }
 
 

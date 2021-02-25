@@ -19,21 +19,15 @@
           <div class="card">
             <div class="card-header blue-gradient-dark text-white">
               <h3 class="card-title">Listado de los documentos de las extensiones</h3>
-              <div class="card-body">
-                 <ul class="list-inline">
+            </div>
+            <div class="card-body table-responsive table-striped">
+              <ul class="list-inline">
                    <li class="list-inline-item">
                       <a href="/" class="link_ruta">
                         Inicio &nbsp; &nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i>
                       </a>
                     </li>
                   </ul><br>
-                <form>
-                  <input type="hidden" id="_url" value="{{ url('') }}">
-                  <input type="hidden" id="_token" value="{{ csrf_token() }}">
-                 </form>
-              </div>
-            </div>
-            <div class="card-body table-responsive table-striped">
               <table id="example" class="table table-bordered table-hover">
                <thead>
                 <tr>

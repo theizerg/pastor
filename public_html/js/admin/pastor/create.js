@@ -57,7 +57,7 @@ $(document).ready(function(){
                   $('#pastor_form #submit').hide();
                   $('#pastor_form #edit-button').attr('href', $('#pastor_form #_url').val() + '/' + json.user_id + '/edit');
                   $('#pastor_form #edit-button').removeClass('hide');
-                  toastr.success('Pastor agregado satisfactoriamente');
+                  toastr.success('Datos ingresados satisfactoriamente');
                 }
               },error: function (data) {
                 var errors = data.responseJSON;

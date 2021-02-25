@@ -20,51 +20,37 @@ class RolesAndPermisosTableSeeder extends Seeder
                                 'RegistrarUsuario',
                                 'EditarUsuario',
                                 'EliminarUsuario',
-                                /* Roles */
-                                'CrearRol',
-                                'VerRol',
-                                'EditarRol',
-                                'EliminarRol',
-                                /* Pagos */
-                                'CrearPago',
-                                'VerPago',
-                                'EditarPago',
-                                'EliminarPago',
-                                /* Moneda */
-                                'VerMoneda',
-                                'CrearMoneda',
-                                'EditarMoneda',
-                                'EliminarMoneda',
-                                /* Modalidad de pagos */
-                                'VerModalidadPago',
-                                'CrearModalidadPago',
-                                'EditarModalidadPago',
-                                'EliminarModalidadPago',
-                                /* Estado de pagos */
-                                'VerEstadoPago',
-                                'CrearEstadoPago',
-                                'EditarEstadoPago',
-                                'EliminarEstadoPago',
-                                /* Saldo disponible */
-                                'VerSaldoDisponible',
-                                'CrearSaldoDisponible',
-                                'EditarSaldoDisponible',
-                                'EliminarSaldoDisponible',
-                                /* Fuente de financiamiento */
-                                'VerFuenteFinanciamiento',
-                                'CrearFuenteFinanciamiento',
-                                'EditarFuenteFinanciamiento',
-                                'EliminarFuenteFinanciamiento',
-                                /* Fuente de financiamiento */
-                                'VerRubros',
-                                'CrearRubros',
-                                'EditarRubros',
-                                'EliminarRubros',
-                                /* Permisos */
+                                'VerNotificaciones',
+                               
                                 'VerPermisos',
                                 'CrearPermisos',
                                 'EditarPermisos',
                                 'EliminarPermisos',
+
+                                'VerRol',
+                                'CrearRol',
+                                'EditarRol',
+                                'EliminarRol',
+
+                                'VerIglesia',
+                                'CrearIglesia',
+                                'EditarIglesia',
+                                'EliminarIglesia',
+
+                                'VerPastores',
+                                'CrearPastores',
+                                'EditarPastores',
+                                'EliminarPastores',
+
+                                'VerActividades',
+                                'CrearActividades',
+                                'EditarActividades',
+                                'EliminarActividades',
+
+                                'VerDocumentos',
+                                'CrearDocumentos',
+                                'EditarDocumentos',
+                                'EliminarDocumentos',
                               ];
 
 
@@ -73,23 +59,22 @@ class RolesAndPermisosTableSeeder extends Seeder
         role admin we will assign all the permissions
         */
         $this->user_permissions = [
-                                    'RegistrarUsuario',
-                                    'CrearRol',
-                                    'VerRol',
-                                    'CrearPago',
-                                    'VerPago',
-                                    'VerMoneda',
-                                    'CrearMoneda',
-                                    'VerModalidadPago',
-                                    'CrearModalidadPago',
-                                    'VerEstadoPago',
-                                    'CrearEstadoPago',
-                                    'VerSaldoDisponible',
-                                    'CrearSaldoDisponible',
-                                    'VerFuenteFinanciamiento',
-                                    'CrearFuenteFinanciamiento',
-                                    'VerRubros',
-                                    'CrearRubros',
+                                    'VerIglesia',
+                                    'CrearIglesia',
+                                    'EditarIglesia',
+                                    'EliminarIglesia',
+
+                                    'VerDocumentos',
+                                    'CrearDocumentos',
+                                    'EditarDocumentos',
+                                    'EliminarDocumentos',
+
+                                    'VerPastores',
+                                    'CrearPastores',
+                                    'EditarPastores',
+                                    'EliminarPastores',
+                                    'VerActividades',
+                                    'CrearActividades',
 
                                     ];
         

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Notificaciones;
 use App\Http\Requests\StoreUser;
 use App\Http\Requests\UpdateUser;
 use Spatie\Permission\Models\Role;
@@ -21,7 +22,9 @@ class UserController extends Controller
                        ->orderBy('created_at', 'desc')
                        ->paginate(10);
         $roles = Role::get();
-        return view('admin.user.index', compact('users','roles'));
+        $notificaciones = Notificaciones::count();
+        $descripNot = Notificaciones::get();
+        return view('admin.user.index', compact('users','roles','notificaciones','descripNot'));
     }
 
 
@@ -30,7 +33,9 @@ class UserController extends Controller
     public function create()
     {
          $roles = Role::get();
-        return view('admin.user.create',compact('roles'));
+         $notificaciones = Notificaciones::count();
+        $descripNot = Notificaciones::get();
+        return view('admin.user.create',compact('roles','notificaciones','descripNot'));
     }
 
 
@@ -59,8 +64,10 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find(\Hashids::decode($id)[0]);
+        $notificaciones = Notificaciones::count();
+        $descripNot = Notificaciones::get();
          $roles = Role::get();
-        return view('admin.user.show',compact('roles','user'));
+        return view('admin.user.show',compact('roles','user','notificaciones','descripNot'));
     }
 
 
@@ -69,9 +76,11 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find(\Hashids::decode($id)[0]);
-      
+
+        $notificaciones = Notificaciones::count();
+        $descripNot = Notificaciones::get();
         $roles = Role::get();
-        return view('admin.user.edit', compact('roles','user'));
+        return view('admin.user.edit', compact('roles','user','notificaciones','descripNot'));
     }
 
 

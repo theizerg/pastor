@@ -22,7 +22,8 @@
           <h4>Datos de la iglesia que pertenece al pastor: {{ $pastor->tx_nombres}} {{ $pastor->tx_apellidos}} </h4>
           
         </div>
-        <ul class="list-inline">
+       <div class="row">
+          <ul class="list-inline ml-4 mt-4">
                    <li class="list-inline-item">
                       <a href="/" class="link_ruta">
                         Inicio &nbsp; &nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -38,12 +39,14 @@
                         Nuevo
                       </a>
                     </li>
-                  </ul><br>
+          </ul><br>
+       </div>
         <form role="form" id="pastor_form">
             <input type="hidden" id="_url" value="{{ url('iglesia') }}">
             <input type="hidden" id="_token" value="{{ csrf_token() }}">
               <div class="card-body">
                 @include('admin.pastor.partials.iglesia')  
+                <input name="pastor_id" type="hidden" value=" {{ $pastor->id}}" id="users_id">
                 
               
               </div>

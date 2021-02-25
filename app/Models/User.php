@@ -21,7 +21,7 @@ protected $primaryKey = 'id';
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'name', 'last_name', 'email', 'password', 'status_id','username'
+        'name', 'last_name', 'email', 'password', 'status','username','nu_zona'
     ];
 
     protected $hidden = [];
@@ -83,7 +83,7 @@ protected $primaryKey = 'id';
 
     public function getDisplayStatusAttribute()
     {
-        return $this->status_id == 1 ? 'Activo' : 'Denegado';
+        return $this->status == 1 ? 'Activo' : 'Denegado';
     }
 
     /*
@@ -109,6 +109,11 @@ protected $primaryKey = 'id';
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+
+      public function notificaciones(){
+        return $this->belongsToMany(Notificaciones::class, 'notificacion_usuarios', 'usuario_id', 'notificacion_id');
     }
 
 }

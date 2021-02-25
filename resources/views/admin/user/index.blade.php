@@ -70,7 +70,7 @@
                     <td>{{ $user->username }}</td>
                     <td>{!! $user->hasRole('Administrador') ? '<b>Administrador</b>' : 'Usuario' !!}</td>
                     <td>{{ $user->email  }}</td>
-                    <td><span class="badge text-white fa-1x {{ $user->status_id ? 'green' : 'red' }}">{{ $user->display_status }}</span></td>
+                    <td><span class="badge {{ $user->status ? 'bg-green' : 'bg-red' }}">{{ $user->display_status }}</span></td>
                     <td>
                        
                        <a class="btn btn-round blue darken-4" href="{{ url('user', [$user->encode_id]) }}"><i class="material-icons" style="color: white;">person</i> </a>

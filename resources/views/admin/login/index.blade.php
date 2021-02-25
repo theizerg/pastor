@@ -49,10 +49,7 @@
                 </tr>
                 @endforeach
               </table>
-              <div class="card-footer clearfix">
-                  <p class="text-muted">Mostrando <strong>{{ $logins->count() }}</strong> registros de <strong>{{$logins->total() }}</strong> totales</p>
-              </div>
-         </div>
+               </div>
             </div>
           </div>
         </div>
