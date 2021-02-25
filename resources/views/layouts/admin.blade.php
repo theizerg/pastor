@@ -148,13 +148,13 @@
             <div class="float-right hidden-xs">
             {{ env('APP_NAME') }}
             </div>
-            <strong>Copyright &copy; 2020 <a href="#">{{ env('APP_NAME') }}</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2021 <a href="#">SAPCNPE</a>.</strong> Todos los derechos reservados.
         </footer>
 
         <!-- Control Sidebar -->
-        <!-- Uncomment this line to activate the control right sidebar menu
-        @@include('layouts.partials.sidebar')
-        -->
+        
+        @include('layouts.partials.sidebar')
+        
         </div>
 
         <!-- REQUIRED JS SCRIPTS -->
