@@ -57,7 +57,7 @@ class ActividadesController extends Controller
 
         $appointment = new Actividades;
         $appointment->user_id = $request->user_id;
-        $appointment->status_id = $request->status_id;
+        $appointment->status = $request->status_id;
         $appointment->hora_comienzo = $request->hora_comienzo;
         $appointment->hora_fin = $request->hora_fin;
         $appointment->comentario = $request->comentario;
@@ -71,7 +71,8 @@ class ActividadesController extends Controller
         $titulo = "Actividad registrada";
         $texto = "El presbítero " .\Auth::user()->display_name. " de la zona " . \Auth::user()->nu_zona.' Ha cargado una actividad'. 'desde el: '.$appointment->fecha_inicio.' Hasta '.$appointment->fecha_fin; 
         $link_texto = "Ver datos de la actividad";
-        $link = "/actividades/" .$appointment->encode_id;
+        $link = "/actividades/".$appointment->encode_id;
+        $link_2 = "/actividades/".$appointment->encode_id."/edit";
         $tipo = 1;
         Notificaciones::crearNotificacion($titulo, $texto, $link,$link_texto, $tipo);
 
@@ -208,9 +209,14 @@ class ActividadesController extends Controller
      * @param  \App\Models\Actividades  $actividades
      * @return \Illuminate\Http\Response
      */
-    public function edit(Actividades $actividades)
+    public function edit($id )
     {
-        //
+        
+        $actividad = Actividades::find(\Hashids::decode($id)[0]);
+        $notificaciones = Notificaciones::count();
+        $descripNot = Notificaciones::get();
+        $roles = Role::get();
+        return view ('admin.actividades.edit', compact('actividad','notificaciones','descripNot','roles'));
     }
 
     /**
@@ -220,9 +226,15 @@ class ActividadesController extends Controller
      * @param  \App\Models\Actividades  $actividades
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Actividades $actividades)
+    public function update(Request $request, $id)
     {
-        //
+        $iglesias = Actividades::findOrFail(\Hashids::decode($id)[0]);
+        $iglesias->update($request->all());
+         $notification = array(
+          'message' => '¡Registro guardado!',
+          'alert-type' => 'success'
+      );
+       return \Redirect::to('/')->with($notification);
     }
 
     /**

@@ -16,7 +16,7 @@
  <div class="row">
   <div class="col-md-6">
     <div class="btn-group">
-      @can('RegistrarUsuario')
+      @can('CrearActividades')
       <a href="{{ url('actividades/create') }}" class="btn blue darken-4 text-white"><i class="fa fa-plus-square"></i> Ingresar</a>
       @endcan
     </div>
@@ -63,7 +63,7 @@
                         <td>{{ $value->fecha_inicio}} - {{ $value->fecha_fin}}</td>
                         <td>{{ $value->hora_comienzo}} - {{ $value->hora_fin}}</td>
                         <td>{{ $value->presbitero->display_name}}</td>
-                        <td><span class="badge text-white fa-1x {{ $value->status_id ? 'bg-success' : 'bg-danger' }}">{{ $value->display_status }}</span></td>
+                        <td><span class="badge text-white fa-1x {{ $value->status ? 'bg-success' : 'bg-danger' }}">{{ $value->display_status }}</span></td>
                        <td><a class="btn btn-round blue darken-4" href="{{ url('actividades', [$value->encode_id]) }}"><i class="mdi mdi-file  text-white"></i> </a>
                              </td>
 

@@ -10,7 +10,7 @@ class Actividades extends Model
     
 
 
-    protected $fillable = ['hora_comienzo', 'hora_fin', 'comentario', 'user_id','status_id'];
+    protected $fillable = ['hora_comienzo', 'hora_fin', 'comentario', 'user_id','status','link_2'];
 
 
 
@@ -34,7 +34,7 @@ class Actividades extends Model
 
     public function getDisplayStatusAttribute()
     {
-        return $this->status_id == 1 ? 'Aceptado' : 'Pendiente';
+        return $this->status == 1 ? 'Aceptado' : 'Pendiente';
     }
 
 

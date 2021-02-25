@@ -35,7 +35,7 @@
                  
                         <i class="fa fa-envelope white-text" aria-hidden="true"></i>
             i
-                        <i class="fa fa-envelope-o  white-text" aria-hidden="true"></i>
+                       Notificaciones pendientes
                   </p>
                 </label>
           
@@ -224,9 +224,10 @@
                                 <div class="col-md-8 col-md-offset-1">
                                     <h5>{{$notificacion->fecha}}</h5>
                                     <h4>
-                                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                        <i class="fas fa-envelope-open" aria-hidden="true"></i>
                                         <a class="btn-link" target="_blank" href="{{$notificacion->link}}">
-                                            <small>{{$notificacion->titulo}}</small></h4>
+                                            <small>{{$notificacion->titulo}}</small>
+
                                         </a>
                                     </h4>
                                     <p class="mb-1">{{$notificacion->texto}}</p>
@@ -236,6 +237,15 @@
                                         {!! Form::open(['route' => ['borrarNotificacion', $notificacion->id], 'method' => 'DELETE', 'class' => 'form-borrar' ]) !!}
                                             <a class="btn btn-link btn-borrar-mensaje" type="submit" value=""><i class="fa fa-trash" aria-hidden="true"></i></a>
                                         {!! Form::close() !!}
+                                    </h4>
+                                </div>
+                                <div class="col-sm-12">
+                                    <h4>
+                                        <i class="fas fa-edit" aria-hidden="true"></i>
+                                        <a class="btn-link" target="_blank" href="{{$notificacion->link_2}}">
+                                            <small>Editar Actividad</small>
+
+                                        </a>
                                     </h4>
                                 </div>
                             </div>

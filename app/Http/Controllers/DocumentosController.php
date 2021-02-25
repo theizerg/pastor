@@ -50,24 +50,19 @@ class DocumentosController extends Controller
     public function store(Request $request)
     {
          //guardar imagen
-        $file = $request->file('nb_documento');
-        $path = public_path() . '/images/documentos';
-        $fileName = uniqid() . $file->getClientOriginalName();
-        $moved = $file->move($path, $fileName);
+        $featured = $request->nb_documento;
+        $featuerd_new = time().$featured->getClientoriginalName();
+        $featured->move('images/documentos', $featuerd_new);
+                    
 
-                //dd($fileName);
 
-                //crear registro
-                //$producto->photo = $fileName;
-
-        //crear registro
-        if($moved)
+        if($featuerd_new)
         {
             $documento = new Documentos();
-            $documento->nb_documento = $fileName;
+            //$documento->nb_documento = $fileName;
             $documento->iglesia_id = $request->iglesia_id;
             $documento->user_id = $request->user_id;
-            //productImgage->featured = false
+            $documento->nb_documento = $featuerd_new;
             $documento->save(); //INSERT
 
             //dd($documento);
