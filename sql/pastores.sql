@@ -12,11 +12,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- Volcando estructura de base de datos para id16045709_mmm
-CREATE DATABASE IF NOT EXISTS `id16045709_mmm` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `id16045709_mmm`;
+-- Volcando estructura de base de datos para id16221233_pastores
 
--- Volcando estructura para tabla id16045709_mmm.actividades
+USE `id16221233_pastores`;
+
+-- Volcando estructura para tabla id16221233_pastores.actividades
 CREATE TABLE IF NOT EXISTS `actividades` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned DEFAULT NULL,
@@ -35,12 +35,12 @@ CREATE TABLE IF NOT EXISTS `actividades` (
   CONSTRAINT `35989_5913ebf64ed0b` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.actividades: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.actividades: ~1 rows (aproximadamente)
 DELETE FROM `actividades`;
 /*!40000 ALTER TABLE `actividades` DISABLE KEYS */;
 /*!40000 ALTER TABLE `actividades` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.cache
+-- Volcando estructura para tabla id16221233_pastores.cache
 CREATE TABLE IF NOT EXISTS `cache` (
   `key` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
   `value` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -48,12 +48,12 @@ CREATE TABLE IF NOT EXISTS `cache` (
   UNIQUE KEY `cache_key_unique` (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.cache: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.cache: ~0 rows (aproximadamente)
 DELETE FROM `cache`;
 /*!40000 ALTER TABLE `cache` DISABLE KEYS */;
 /*!40000 ALTER TABLE `cache` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.documentos
+-- Volcando estructura para tabla id16221233_pastores.documentos
 CREATE TABLE IF NOT EXISTS `documentos` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nb_documento` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -68,14 +68,14 @@ CREATE TABLE IF NOT EXISTS `documentos` (
   CONSTRAINT `documentos_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.documentos: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.documentos: ~1 rows (aproximadamente)
 DELETE FROM `documentos`;
 /*!40000 ALTER TABLE `documentos` DISABLE KEYS */;
 INSERT INTO `documentos` (`id`, `nb_documento`, `user_id`, `iglesia_id`, `created_at`, `updated_at`) VALUES
 	(1, '1614287304homework-emily.docx', 2, 20, '2021-02-25 17:08:24', '2021-02-25 17:08:24');
 /*!40000 ALTER TABLE `documentos` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.estado
+-- Volcando estructura para tabla id16221233_pastores.estado
 CREATE TABLE IF NOT EXISTS `estado` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nb_estado` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `estado` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.estado: ~24 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.estado: ~24 rows (aproximadamente)
 DELETE FROM `estado`;
 /*!40000 ALTER TABLE `estado` DISABLE KEYS */;
 INSERT INTO `estado` (`id`, `nb_estado`, `created_at`, `updated_at`) VALUES
@@ -114,7 +114,7 @@ INSERT INTO `estado` (`id`, `nb_estado`, `created_at`, `updated_at`) VALUES
 	(24, 'Zulia', '2021-02-25 11:51:05', '2021-02-25 11:51:05');
 /*!40000 ALTER TABLE `estado` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.estado_civil
+-- Volcando estructura para tabla id16221233_pastores.estado_civil
 CREATE TABLE IF NOT EXISTS `estado_civil` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nb_estado_civil` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `estado_civil` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.estado_civil: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.estado_civil: ~3 rows (aproximadamente)
 DELETE FROM `estado_civil`;
 /*!40000 ALTER TABLE `estado_civil` DISABLE KEYS */;
 INSERT INTO `estado_civil` (`id`, `nb_estado_civil`, `created_at`, `updated_at`) VALUES
@@ -132,7 +132,7 @@ INSERT INTO `estado_civil` (`id`, `nb_estado_civil`, `created_at`, `updated_at`)
 	(3, 'Viudo(a)', '2021-02-25 11:51:05', '2021-02-25 11:51:05');
 /*!40000 ALTER TABLE `estado_civil` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.genero
+-- Volcando estructura para tabla id16221233_pastores.genero
 CREATE TABLE IF NOT EXISTS `genero` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nb_genero` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `genero` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.genero: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.genero: ~2 rows (aproximadamente)
 DELETE FROM `genero`;
 /*!40000 ALTER TABLE `genero` DISABLE KEYS */;
 INSERT INTO `genero` (`id`, `nb_genero`, `created_at`, `updated_at`) VALUES
@@ -149,7 +149,7 @@ INSERT INTO `genero` (`id`, `nb_genero`, `created_at`, `updated_at`) VALUES
 	(2, 'Femenino', '2021-02-25 11:51:05', '2021-02-25 11:51:05');
 /*!40000 ALTER TABLE `genero` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.grado_instruccion
+-- Volcando estructura para tabla id16221233_pastores.grado_instruccion
 CREATE TABLE IF NOT EXISTS `grado_instruccion` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nb_grado_instruccion` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `grado_instruccion` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.grado_instruccion: ~7 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.grado_instruccion: ~7 rows (aproximadamente)
 DELETE FROM `grado_instruccion`;
 /*!40000 ALTER TABLE `grado_instruccion` DISABLE KEYS */;
 INSERT INTO `grado_instruccion` (`id`, `nb_grado_instruccion`, `created_at`, `updated_at`) VALUES
@@ -171,7 +171,7 @@ INSERT INTO `grado_instruccion` (`id`, `nb_grado_instruccion`, `created_at`, `up
 	(7, 'Doctorado', '2021-02-25 11:51:06', '2021-02-25 11:51:06');
 /*!40000 ALTER TABLE `grado_instruccion` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.grado_ministerial
+-- Volcando estructura para tabla id16221233_pastores.grado_ministerial
 CREATE TABLE IF NOT EXISTS `grado_ministerial` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nb_grado_ministerial` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -180,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `grado_ministerial` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.grado_ministerial: ~4 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.grado_ministerial: ~4 rows (aproximadamente)
 DELETE FROM `grado_ministerial`;
 /*!40000 ALTER TABLE `grado_ministerial` DISABLE KEYS */;
 INSERT INTO `grado_ministerial` (`id`, `nb_grado_ministerial`, `created_at`, `updated_at`) VALUES
@@ -190,7 +190,7 @@ INSERT INTO `grado_ministerial` (`id`, `nb_grado_ministerial`, `created_at`, `up
 	(4, 'Ministro Ordenado', '2021-02-25 11:51:05', '2021-02-25 11:51:05');
 /*!40000 ALTER TABLE `grado_ministerial` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.iglesias
+-- Volcando estructura para tabla id16221233_pastores.iglesias
 CREATE TABLE IF NOT EXISTS `iglesias` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nb_nombre` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -220,7 +220,7 @@ CREATE TABLE IF NOT EXISTS `iglesias` (
   CONSTRAINT `iglesias_users_id_foreign` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.iglesias: ~23 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.iglesias: ~23 rows (aproximadamente)
 DELETE FROM `iglesias`;
 /*!40000 ALTER TABLE `iglesias` DISABLE KEYS */;
 INSERT INTO `iglesias` (`id`, `nb_nombre`, `nu_zona`, `nb_urbanizacion`, `nb_edificio`, `nu_casa`, `nb_parroquia`, `nb_municipio`, `nb_ciudad`, `estado_id`, `nu_codigo_postal`, `nu_telefono`, `tipo_local_id`, `pastor_id`, `users_id`, `created_at`, `updated_at`) VALUES
@@ -249,7 +249,7 @@ INSERT INTO `iglesias` (`id`, `nb_nombre`, `nu_zona`, `nb_urbanizacion`, `nb_edi
 	(23, 'KM 4 DEL JUNQUITO', 1, '---', '---', '0', '---', '---', '---', 10, '1010', '0', 1, 47, 2, '2021-02-25 16:21:56', '2021-02-25 16:21:56');
 /*!40000 ALTER TABLE `iglesias` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.logins
+-- Volcando estructura para tabla id16221233_pastores.logins
 CREATE TABLE IF NOT EXISTS `logins` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL,
@@ -263,7 +263,7 @@ CREATE TABLE IF NOT EXISTS `logins` (
   CONSTRAINT `logins_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.logins: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.logins: ~3 rows (aproximadamente)
 DELETE FROM `logins`;
 /*!40000 ALTER TABLE `logins` DISABLE KEYS */;
 INSERT INTO `logins` (`id`, `user_id`, `user_agent`, `session_token`, `ip_address`, `login_at`, `logout_at`) VALUES
@@ -274,7 +274,7 @@ INSERT INTO `logins` (`id`, `user_id`, `user_agent`, `session_token`, `ip_addres
 	(5, 1, 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.59 Safari/537.36', 'f949WvIz3oPOMytTNfHMcXViStpjFPEk1KRYbcBO', '127.0.0.1', '2021-02-25 17:50:13', NULL);
 /*!40000 ALTER TABLE `logins` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.migrations
+-- Volcando estructura para tabla id16221233_pastores.migrations
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -282,7 +282,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.migrations: ~20 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.migrations: ~20 rows (aproximadamente)
 DELETE FROM `migrations`;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -308,7 +308,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(20, '2021_02_21_204033_notificacion_usuario_table', 1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.model_has_permissions
+-- Volcando estructura para tabla id16221233_pastores.model_has_permissions
 CREATE TABLE IF NOT EXISTS `model_has_permissions` (
   `permission_id` int(10) unsigned NOT NULL,
   `model_id` int(10) unsigned NOT NULL,
@@ -318,12 +318,12 @@ CREATE TABLE IF NOT EXISTS `model_has_permissions` (
   CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.model_has_permissions: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.model_has_permissions: ~0 rows (aproximadamente)
 DELETE FROM `model_has_permissions`;
 /*!40000 ALTER TABLE `model_has_permissions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `model_has_permissions` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.model_has_roles
+-- Volcando estructura para tabla id16221233_pastores.model_has_roles
 CREATE TABLE IF NOT EXISTS `model_has_roles` (
   `role_id` int(10) unsigned NOT NULL,
   `model_id` int(10) unsigned NOT NULL,
@@ -333,7 +333,7 @@ CREATE TABLE IF NOT EXISTS `model_has_roles` (
   CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.model_has_roles: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.model_has_roles: ~3 rows (aproximadamente)
 DELETE FROM `model_has_roles`;
 /*!40000 ALTER TABLE `model_has_roles` DISABLE KEYS */;
 INSERT INTO `model_has_roles` (`role_id`, `model_id`, `model_type`) VALUES
@@ -342,7 +342,7 @@ INSERT INTO `model_has_roles` (`role_id`, `model_id`, `model_type`) VALUES
 	(1, 3, 'App\\Models\\User');
 /*!40000 ALTER TABLE `model_has_roles` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.nacionalidad
+-- Volcando estructura para tabla id16221233_pastores.nacionalidad
 CREATE TABLE IF NOT EXISTS `nacionalidad` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nb_nacionalidad` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -351,7 +351,7 @@ CREATE TABLE IF NOT EXISTS `nacionalidad` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.nacionalidad: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.nacionalidad: ~2 rows (aproximadamente)
 DELETE FROM `nacionalidad`;
 /*!40000 ALTER TABLE `nacionalidad` DISABLE KEYS */;
 INSERT INTO `nacionalidad` (`id`, `nb_nacionalidad`, `created_at`, `updated_at`) VALUES
@@ -359,7 +359,7 @@ INSERT INTO `nacionalidad` (`id`, `nb_nacionalidad`, `created_at`, `updated_at`)
 	(2, 'Extranjero', '2021-02-25 11:51:06', '2021-02-25 11:51:06');
 /*!40000 ALTER TABLE `nacionalidad` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.notificaciones
+-- Volcando estructura para tabla id16221233_pastores.notificaciones
 CREATE TABLE IF NOT EXISTS `notificaciones` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `titulo` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -373,12 +373,12 @@ CREATE TABLE IF NOT EXISTS `notificaciones` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.notificaciones: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.notificaciones: ~1 rows (aproximadamente)
 DELETE FROM `notificaciones`;
 /*!40000 ALTER TABLE `notificaciones` DISABLE KEYS */;
 /*!40000 ALTER TABLE `notificaciones` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.notificacion_usuarios
+-- Volcando estructura para tabla id16221233_pastores.notificacion_usuarios
 CREATE TABLE IF NOT EXISTS `notificacion_usuarios` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `leido` tinyint(1) NOT NULL DEFAULT '0',
@@ -393,12 +393,12 @@ CREATE TABLE IF NOT EXISTS `notificacion_usuarios` (
   CONSTRAINT `not_usr_usr_fk` FOREIGN KEY (`usuario_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.notificacion_usuarios: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.notificacion_usuarios: ~0 rows (aproximadamente)
 DELETE FROM `notificacion_usuarios`;
 /*!40000 ALTER TABLE `notificacion_usuarios` DISABLE KEYS */;
 /*!40000 ALTER TABLE `notificacion_usuarios` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.pais
+-- Volcando estructura para tabla id16221233_pastores.pais
 CREATE TABLE IF NOT EXISTS `pais` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nb_pais` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -407,7 +407,7 @@ CREATE TABLE IF NOT EXISTS `pais` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=195 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.pais: ~194 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.pais: ~194 rows (aproximadamente)
 DELETE FROM `pais`;
 /*!40000 ALTER TABLE `pais` DISABLE KEYS */;
 INSERT INTO `pais` (`id`, `nb_pais`, `created_at`, `updated_at`) VALUES
@@ -607,7 +607,7 @@ INSERT INTO `pais` (`id`, `nb_pais`, `created_at`, `updated_at`) VALUES
 	(194, 'Zimbabue', '2021-02-25 11:51:05', '2021-02-25 11:51:05');
 /*!40000 ALTER TABLE `pais` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.password_resets
+-- Volcando estructura para tabla id16221233_pastores.password_resets
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -615,12 +615,12 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.password_resets: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.password_resets: ~0 rows (aproximadamente)
 DELETE FROM `password_resets`;
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.pastor
+-- Volcando estructura para tabla id16221233_pastores.pastor
 CREATE TABLE IF NOT EXISTS `pastor` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `tx_nombres` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -674,7 +674,7 @@ CREATE TABLE IF NOT EXISTS `pastor` (
   CONSTRAINT `pastor_nacionalidad_id_foreign` FOREIGN KEY (`nacionalidad_id`) REFERENCES `nacionalidad` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.pastor: ~44 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.pastor: ~44 rows (aproximadamente)
 DELETE FROM `pastor`;
 /*!40000 ALTER TABLE `pastor` DISABLE KEYS */;
 INSERT INTO `pastor` (`id`, `tx_nombres`, `tx_apellidos`, `nu_cedula`, `nu_edad`, `tx_correo`, `tx_direccion`, `nu_telefono`, `fe_ingreso`, `nb_bau_Espiritu_Santo`, `nb_ins_teologico`, `nb_desc_ins_teologico`, `nu_tiempo_ins`, `nb_titulo_obtenido`, `nb_sufre_enfermedad`, `nb_descripcion_enfermedad`, `nb_hijos`, `nu_carga_familiar_hijos`, `tipo_sangre_id`, `nb_ocupacion`, `nu_zona`, `lugar_nacimiento_id`, `nacionalidad_id`, `fe_nacimiento`, `genero_id`, `grado_instruccion_id`, `grado_ministerial_id`, `estado_id`, `estado_civil_id`, `tx_nota`, `picture`, `users_id`, `status`, `created_at`, `updated_at`) VALUES
@@ -724,7 +724,7 @@ INSERT INTO `pastor` (`id`, `tx_nombres`, `tx_apellidos`, `nu_cedula`, `nu_edad`
 	(48, 'CLAUDIA MILENA', 'MACHADO DE PAEZ', '22.014.443', '---', 'mmachado@mmmvenezuela.com', '---', '---', '4 AÑOS', 'Si', 'No', 'N/A', 'N/A', 'N/A', 'No', 'N/A', 'No', 0, 1, '---', '1', 189, 1, '2021-12-31', 2, 3, 1, 10, 2, 'FALTAN DATOS PARA ACTUALIZAR', NULL, 2, 1, '2021-02-25 16:30:54', '2021-02-25 16:30:54');
 /*!40000 ALTER TABLE `pastor` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.permissions
+-- Volcando estructura para tabla id16221233_pastores.permissions
 CREATE TABLE IF NOT EXISTS `permissions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -734,7 +734,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.permissions: ~29 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.permissions: ~29 rows (aproximadamente)
 DELETE FROM `permissions`;
 /*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
@@ -769,7 +769,7 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 	(29, 'EliminarDocumentos', 'web', '2021-02-25 11:51:03', '2021-02-25 11:51:03');
 /*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.roles
+-- Volcando estructura para tabla id16221233_pastores.roles
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -780,7 +780,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.roles: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.roles: ~2 rows (aproximadamente)
 DELETE FROM `roles`;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `status_id`, `created_at`, `updated_at`) VALUES
@@ -788,7 +788,7 @@ INSERT INTO `roles` (`id`, `name`, `guard_name`, `status_id`, `created_at`, `upd
 	(2, 'Usuario', 'web', '1', '2021-02-25 11:51:03', '2021-02-25 11:51:03');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.role_has_permissions
+-- Volcando estructura para tabla id16221233_pastores.role_has_permissions
 CREATE TABLE IF NOT EXISTS `role_has_permissions` (
   `permission_id` int(10) unsigned NOT NULL,
   `role_id` int(10) unsigned NOT NULL,
@@ -798,7 +798,7 @@ CREATE TABLE IF NOT EXISTS `role_has_permissions` (
   CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.role_has_permissions: ~43 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.role_has_permissions: ~43 rows (aproximadamente)
 DELETE FROM `role_has_permissions`;
 /*!40000 ALTER TABLE `role_has_permissions` DISABLE KEYS */;
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
@@ -847,7 +847,7 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 	(29, 2);
 /*!40000 ALTER TABLE `role_has_permissions` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.tipo_local
+-- Volcando estructura para tabla id16221233_pastores.tipo_local
 CREATE TABLE IF NOT EXISTS `tipo_local` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nb_nombre` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -856,7 +856,7 @@ CREATE TABLE IF NOT EXISTS `tipo_local` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.tipo_local: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.tipo_local: ~2 rows (aproximadamente)
 DELETE FROM `tipo_local`;
 /*!40000 ALTER TABLE `tipo_local` DISABLE KEYS */;
 INSERT INTO `tipo_local` (`id`, `nb_nombre`, `created_at`, `updated_at`) VALUES
@@ -864,7 +864,7 @@ INSERT INTO `tipo_local` (`id`, `nb_nombre`, `created_at`, `updated_at`) VALUES
 	(2, 'Propio', '2021-02-25 11:51:06', '2021-02-25 11:51:06');
 /*!40000 ALTER TABLE `tipo_local` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.tipo_sangre
+-- Volcando estructura para tabla id16221233_pastores.tipo_sangre
 CREATE TABLE IF NOT EXISTS `tipo_sangre` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nb_tipo_sangre` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -873,7 +873,7 @@ CREATE TABLE IF NOT EXISTS `tipo_sangre` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.tipo_sangre: ~9 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.tipo_sangre: ~9 rows (aproximadamente)
 DELETE FROM `tipo_sangre`;
 /*!40000 ALTER TABLE `tipo_sangre` DISABLE KEYS */;
 INSERT INTO `tipo_sangre` (`id`, `nb_tipo_sangre`, `created_at`, `updated_at`) VALUES
@@ -888,7 +888,7 @@ INSERT INTO `tipo_sangre` (`id`, `nb_tipo_sangre`, `created_at`, `updated_at`) V
 	(9, 'AB Negativo', '2021-02-25 11:51:06', '2021-02-25 11:51:06');
 /*!40000 ALTER TABLE `tipo_sangre` ENABLE KEYS */;
 
--- Volcando estructura para tabla id16045709_mmm.users
+-- Volcando estructura para tabla id16221233_pastores.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -906,7 +906,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla id16045709_mmm.users: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla id16221233_pastores.users: ~3 rows (aproximadamente)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `username`, `last_name`, `email`, `password`, `nu_zona`, `status`, `remember_token`, `deleted_at`, `created_at`, `updated_at`) VALUES
