@@ -15,7 +15,7 @@
                         </p><p class="text-muted">Ingresa tu cuenta</p>
                          <form id="main-form" class="">
                           <input type="hidden" id="_url" value="{{ url('login') }}">
-                          <input type="hidden" id="_redirect" value="{{ url('/') }}">
+                          <input type="hidden" id="_redirect" value="{{ url('/home') }}">
                           <input type="hidden" id="_token" value="{{ csrf_token() }}">
                             <div class="input-group mb-3">
                                 <span class="input-group-addon"><i class="fas-user"></i></span>

@@ -12,10 +12,8 @@
   }
 /*** Global ***/
 
+ 
 
-.blue-gradient-dark{
-  background:linear-gradient(to right,#2B89D2,#0C59A7,#085E90);
-}
 
 .mdb-color.lighten-5 {
   background-color: #d0d6e2 !important;
@@ -1001,7 +999,7 @@
 }
 
 .yellow-text {
-  color: #ffeb3b !important;
+  color: #757575 !important;
 }
 
 .rgba-yellow-slight,
@@ -1033,6 +1031,9 @@
 
 .yellow.darken-4 {
   background-color: #f57f17 !important;
+}
+.yellow.darken-text {
+  color: #f57f17 !important;
 }
 
 .yellow.accent-1 {
@@ -1451,6 +1452,11 @@
 
 .grey.darken-4 {
   background-color: #212121 !important;
+}
+
+.grey-darken-text{
+  color: #757575 !important;
+
 }
 
 .black {

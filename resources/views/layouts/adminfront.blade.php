@@ -20,7 +20,7 @@
     @yield('content')
 
     <!-- REQUIRED JS SCRIPTS -->
-    <script src="{{ asset('js/apps.js') }}"></script>>
+    <script src="{{ asset('js/apps.js') }}"></script>
     @stack('scripts')
   </body>
 </html>

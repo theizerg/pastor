@@ -10,17 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-/*Route::get('/', function () {
-    return view('test');
-});
-*/
+Route::get('/', 'TestController@index')->name('inicio');
 
 Auth::routes();
 
 Route::middleware(['auth',])->group(function () {
 
-  Route::get('/', 'HomeController@index')->name('home');
+  Route::get('/home', 'HomeController@index')->name('home');
   Route::get('user-autocomplete', 'UserController@autocomplete');
 
   Route::resource('user', 'UserController');
@@ -31,14 +27,14 @@ Route::middleware(['auth',])->group(function () {
   /*********************************************************/
   /******************Modulo de administracion**************/
   /*******************************************************/
-   Route::resource('pastor', 'PastorController');
-   Route::get('pastor/{pastor_id}/iglesia', 'PastorController@iglesia');
-   Route::post('iglesia', 'PastorController@guardar');
-   Route::resource('imprimir', 'ImprimirController');
-   Route::resource('iglesias', 'IglesiasController');
-   Route::get('documentos/{iglesia_id}', 'IglesiasController@documentos');
-   Route::resource('documento', 'DocumentosController');
-   Route::get('documento', 'DocumentosController@documento');
+   Route::resource('encabezado', 'CabeceraController');
+   Route::resource('somos', 'SomosController');
+   Route::resource('somosCuadros', 'SomosCuadrosController');
+   Route::resource('proyectos', 'ProyectoController');
+   Route::resource('proyectosCuadros', 'GrupoProyectosController');
+   Route::resource('planes', 'PlanesController');
+   Route::resource('planesCuadros', 'GrupoPlanesController');
+   Route::resource('cursos', 'CursosController');
 
  /*******************************************************/
 /*******************************************************/

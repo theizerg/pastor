@@ -46,9 +46,14 @@ class DocumentosController extends Controller
     {
          //guardar imagen
         $file = $request->file('nb_documento');
-        $path = public_path() . '/documentos/extension';
+        $path = public_path() . '/images/documentos';
         $fileName = uniqid() . $file->getClientOriginalName();
         $moved = $file->move($path, $fileName);
+
+                //dd($fileName);
+
+                //crear registro
+                $producto->photo = $fileName;
 
         //crear registro
         if($moved)
@@ -84,7 +89,7 @@ class DocumentosController extends Controller
     {
         $documento = Documentos::find($id);
 
-        $public_path = public_path().'/documentos/extension/'.$documento->nb_documento;
+        $public_path = public_path().'/images/documentos/'.$documento->nb_documento;
         
         if ($public_path <> null){
 

@@ -17,6 +17,26 @@
 
 
         @stack('styles')
+        <style>
+             .blue-gradient-dark
+               {
+                background:linear-gradient(to right,#2B89D2,#0C59A7,#085E90);
+               }
+            .red-gradient-dark
+               {
+                background:linear-gradient(to right,#D22B2B,#A70C0C,#900808);
+               }
+            .green-gradient-dark
+               {
+                background:linear-gradient(to right,#39901E,#39901E,#116500);
+               }
+            .orange-gradient-dark
+               {
+                background:linear-gradient(to right,#90511E,#905E1E,#653900);
+               }
+
+
+        </style>
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper" id="body">
